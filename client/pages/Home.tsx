@@ -15,14 +15,6 @@ export default function Home() {
               <p className="text-xl text-gray-100 mb-8">
                 Meet GenEd - the AI-powered educational companion. Every child deserves learning that adapts to their pace, champions their strengths, and sparks their curiosity.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="border-2 border-white text-white hover:bg-white hover:text-brand-navy font-bold px-8 py-4 rounded-lg transition-all duration-200">
-                  Watch Demo
-                </button>
-              </div>
-              <p className="text-gray-200 mt-6 text-sm">
-                🎓 Join 50,000+ families already transforming their child's learning
-              </p>
             </div>
             <div className="hidden lg:block">
               <div className="relative">
@@ -51,10 +43,10 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Challenges Section */}
-      <section className="py-20 px-4 bg-gray-50">
+      < section className="py-20 px-4 bg-gray-50" >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-brand-navy mb-4">
@@ -91,10 +83,10 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
       {/* What Children Need Section */}
-      <section className="py-20 px-4">
+      < section className="py-20 px-4" >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-brand-navy mb-4">
@@ -135,10 +127,10 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Our Solution Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-brand-navy/5 to-brand-green/5">
+      < section className="py-20 px-4 bg-gradient-to-r from-brand-navy/5 to-brand-green/5" >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-brand-navy mb-4">
@@ -180,10 +172,10 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
       {/* How It Works Section */}
-      <section className="py-20 px-4">
+      < section className="py-20 px-4" >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-brand-navy mb-4">
@@ -227,10 +219,10 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Team Section */}
-      <section className="py-20 px-4 bg-gray-50">
+      < section className="py-20 px-4 bg-gray-50" >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-brand-navy mb-4">
@@ -277,10 +269,10 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Content Partners Section */}
-      <section className="py-20 px-4">
+      < section className="py-20 px-4" >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-brand-navy mb-4">
@@ -311,10 +303,10 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-brand-navy to-blue-700 text-white">
+      < section className="py-20 px-4 bg-gradient-to-r from-brand-navy to-blue-700 text-white" >
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Ready to Transform Your Child's Learning?
@@ -329,7 +321,7 @@ export default function Home() {
             Get Started Now
           </Link>
         </div>
-      </section>
-    </div>
+      </section >
+    </div >
   );
 }
