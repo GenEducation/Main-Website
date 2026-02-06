@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Zap, Sparkles, Gauge, Target, Users, BookOpen, Award } from 'lucide-react';
-
+import { Check, Lock, Brain, AlertCircle } from 'lucide-react';
+import { CheckCircle2, Play } from 'lucide-react';
 export default function Home() {
   return (
     <div className="bg-white">
@@ -10,11 +11,10 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
-                Unlock Your Child's <span className="text-brand-green">Unique Potential</span>
+                Personalised Education <span className="text-brand-green">Guided by AI, Trusted by Parents</span>
               </h1>
               <p className="text-xl text-gray-100 mb-8">
-                Meet GenEd - the AI-powered educational companion. Every child deserves learning that adapts to their pace, champions their strengths, and sparks their curiosity.
-              </p>
+                GenEd guides students with personalized, curriculum-aligned learning while sharing insights with parents — building confidence, closing gaps, & driving true mastery, not just homework completion.              </p>
             </div>
             <div className="hidden lg:block">
               <div className="relative">
@@ -22,7 +22,7 @@ export default function Home() {
                 <div className="relative bg-gradient-to-br from-blue-400 to-brand-green rounded-3xl p-8 shadow-2xl">
                   <div className="grid grid-cols-2 gap-4">
                     <div className="bg-white/10 backdrop-blur rounded-lg p-6 text-center">
-                      <div className="text-3xl font-bold mb-2">∞</div>
+                      <div className="text-3xl font-bold mb-2">100%</div>
                       <p className="text-sm font-semibold">Personalized</p>
                     </div>
                     <div className="bg-white/10 backdrop-blur rounded-lg p-6 text-center">
@@ -35,7 +35,7 @@ export default function Home() {
                     </div>
                     <div className="bg-white/10 backdrop-blur rounded-lg p-6 text-center">
                       <div className="text-3xl font-bold mb-2">🎯</div>
-                      <p className="text-sm font-semibold">Goal Focused</p>
+                      <p className="text-sm font-semibold">Curriculum Aligned</p>
                     </div>
                   </div>
                 </div>
@@ -45,9 +45,10 @@ export default function Home() {
         </div>
       </section >
 
-      {/* Challenges Section */}
-      < section className="py-20 px-4 bg-gray-50" >
+      {/* The Scientific Gap Section */}
+      <section className="py-20 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
+          {/* Header: Shift from "Challenges" to "The Scientific Problem" */}
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-brand-navy mb-4">
               The Challenge in Today's Classroom
@@ -61,37 +62,60 @@ export default function Home() {
             {[
               {
                 icon: '👥',
+                // subtitle: 'One Teacher 30 Students',
                 title: 'One Size Doesn\'t Fit All',
                 description: 'Teachers manage 30+ students with different learning styles, paces, and needs. Individual attention is impossible.'
               },
               {
                 icon: '⏰',
+                // subtitle: 'One Teacher 30 Students',
                 title: 'Learning Pace Mismatch',
                 description: 'Some students rush ahead while others fall behind. The classroom pace can\'t adapt to each child\'s needs.'
               },
               {
-                icon: '❓',
-                title: 'Hidden Knowledge Gaps',
-                description: 'Students struggle silently with gaps that compound over time, leading to frustration and disengagement.'
+                icon: '🧀', // The Swiss Cheese visual
+                title: 'The Swiss Cheese Effect',
+                // subtitle: 'Compound Learning Gaps',
+                description: 'In a fixed-pace classroom, missed concepts go undetected. These "holes" in foundational knowledge compound over time, causing students to hit a wall in higher grades.'
               }
             ].map((item, idx) => (
-              <div key={idx} className="bg-white rounded-xl p-8 shadow-md hover:shadow-lg transition-shadow">
-                <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-bold text-brand-navy mb-3">{item.title}</h3>
-                <p className="text-gray-600">{item.description}</p>
+              <div key={idx} className="bg-white rounded-xl p-8 shadow-sm hover:shadow-xl transition-all border-t-4 border-transparent hover:border-brand-blue relative overflow-hidden group">
+
+                {/* Subtle Background Number for Academic feel */}
+                <div className="absolute -right-4 -top-4 text-9xl text-gray-50 opacity-5 font-serif group-hover:text-brand-blue group-hover:opacity-10 transition-colors">
+                  {idx + 1}
+                </div>
+
+                <div className="relative z-10">
+                  <div className="text-4xl mb-4 bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center text-brand-blue">
+                    {item.icon}
+                  </div>
+
+                  {/* Scientific Subtitle (The Hook for Academics) */}
+                  <div className="text-xs font-bold tracking-widest text-brand-blue uppercase mb-1">
+                    {item.subtitle}
+                  </div>
+
+                  <h3 className="text-xl font-bold text-brand-navy mb-3">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-gray-600 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
         </div>
-      </section >
+      </section>
 
       {/* What Children Need Section */}
       < section className="py-20 px-4" >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-brand-navy mb-4">
-              What Today's Children Need to Stay Ahead
-            </h2>
+              Bridging the Gap Between Learning Theory & Execution            </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               To thrive in a competitive, rapidly changing world, students need more than textbooks
             </p>
@@ -102,8 +126,8 @@ export default function Home() {
               {[
                 { title: 'Adaptive Learning', desc: 'Content that adjusts to their pace, not vice versa' },
                 { title: 'Personalized Guidance', desc: 'Support tailored to their unique strengths and weaknesses' },
-                { title: 'Continuous Feedback', desc: 'Real-time insights into progress and areas for improvement' },
-                { title: 'Confidence Building', desc: 'Positive reinforcement and achievable milestones' }
+                { title: 'Dynamic ZPD Calibration', desc: 'The Zone of Proximal Development (ZPD) is the "sweet spot" of learning—tasks that are too hard to do alone but possible with guidance.' },
+                { title: 'Mastery-Based Progression', desc: 'In schools, the class moves on to Chapter 5 even if the student failed Chapter 4. This creates the "Swiss Cheese Effect"' }
               ].map((item, idx) => (
                 <div key={idx} className="flex gap-4">
                   <div className="flex-shrink-0">
@@ -118,18 +142,96 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <div className="bg-gradient-to-br from-brand-green/20 to-blue-100 rounded-3xl p-12 flex items-center justify-center">
-              <div className="text-center">
-                <Sparkles size={80} className="mx-auto text-brand-green mb-6" />
-                <p className="text-2xl font-bold text-brand-navy mb-4">Personalized Learning Path</p>
-                <p className="text-gray-700">Every child learns differently. Our AI ensures every lesson is perfectly suited for them.</p>
+            {/* RIGHT COLUMN: The Simplified "Smart Journey" UI */}
+            <div className="relative bg-white rounded-3xl shadow-xl border border-gray-100 p-8 overflow-hidden">
+
+              {/* Header: Simple & Clear */}
+              <div className="flex items-center justify-between mb-8 pb-4 border-b border-gray-50">
+                <h4 className="font-bold text-brand-navy text-lg">Aarav's Math Journey</h4>
+                <span className="text-xs font-medium text-gray-400">Live Session</span>
+              </div>
+
+              {/* The Timeline Container */}
+              <div className="relative space-y-8 pl-8">
+
+                {/* The Connecting Line */}
+                <div className="absolute left-[19px] top-4 bottom-4 w-0.5 bg-gray-100"></div>
+
+                {/* STEP 1: DONE (The Foundation) */}
+                <div className="relative opacity-60 hover:opacity-100 transition-opacity">
+                  <div className="absolute -left-8 w-6 h-6 bg-white text-green-500 z-10">
+                    <CheckCircle2 size={24} fill="white" className="bg-green-500 rounded-full" />
+                  </div>
+                  <div>
+                    <h5 className="font-bold text-gray-700">Basic Fractions</h5>
+                    <p className="text-xs text-green-600 font-medium">✅ Mastered (No Gaps)</p>
+                  </div>
+                </div>
+
+                {/* STEP 2: NOW (The Personalization Magic) */}
+                <div className="relative">
+
+                  {/* The "Play" Icon with Pulse */}
+                  <div className="absolute -left-8 z-10">
+                    <span className="animate-ping absolute inline-flex h-6 w-6 rounded-full bg-blue-400 opacity-75"></span>
+                    <div className="relative w-6 h-6 bg-brand-blue rounded-full flex items-center justify-center border-2 border-white shadow-md">
+                      <Play size={10} fill="white" className="text-white ml-0.5" />
+                    </div>
+                  </div>
+
+                  {/* The Active Card */}
+                  <div className="bg-blue-50 rounded-xl p-5 border border-blue-100 shadow-sm relative">
+                    <div className="absolute -right-2 -top-2 bg-brand-blue text-white text-[10px] font-bold px-2 py-1 rounded-full shadow-sm">
+                      LEARNING NOW
+                    </div>
+
+                    <h5 className="font-bold text-brand-blue mb-2 text-lg">Equivalent Fractions</h5>
+
+                    {/* The "Self-Explanatory" Story */}
+                    <div className="space-y-2">
+                      <div className="flex items-start gap-2 text-sm text-gray-600">
+                        <span className="mt-1">🤖</span>
+                        <p>"Aarav was stuck on the textbook definition..."</p>
+                      </div>
+
+                      {/* The Adaptation Arrow */}
+                      <div className="pl-6 text-gray-400 text-xs font-bold">⬇️ AI ADAPTED LESSON</div>
+
+                      <div className="flex items-start gap-2 text-sm font-medium text-brand-navy bg-white p-2 rounded-lg border border-blue-100">
+                        <Zap size={16} className="text-yellow-500 fill-yellow-500 mt-0.5" />
+                        <p>Switched to "Pizza Slices" visual mode.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* STEP 3: NEXT (The Safety Lock) */}
+                <div className="relative">
+                  <div className="absolute -left-8 w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center border-2 border-white z-10">
+                    <Lock size={12} className="text-gray-400" />
+                  </div>
+                  <div>
+                    <h5 className="font-bold text-gray-400">Adding Mixed Numbers</h5>
+
+                    {/* Simple Explanation */}
+                    <div className="flex items-center gap-2 mt-1">
+                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-gray-100 text-gray-500 border border-gray-200">
+                        LOCKED
+                      </span>
+                      <span className="text-xs text-gray-400">
+                        Finish "Equivalent Fractions" first.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
         </div>
       </section >
 
-      {/* Our Solution Section */}
+      {/* Our Solution Section
       < section className="py-20 px-4 bg-gradient-to-r from-brand-navy/5 to-brand-green/5" >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -172,7 +274,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section >
+      </section > */}
 
       {/* How It Works Section */}
       < section className="py-20 px-4" >
