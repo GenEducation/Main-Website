@@ -289,23 +289,23 @@ export default function Home() {
             {[
               {
                 step: '01',
-                title: 'Get to Know',
-                desc: 'Parents tell us what the child loves, where they struggle, and how they learn best.'
+                title: 'Smart Understanding',
+                desc: 'We continuously reads how a student thinks, learns, and responds — identifying strengths, misconceptions, and learning patterns in real time.'
               },
               {
                 step: '02',
-                title: 'Assess',
-                desc: 'AI evaluates learning style, pace, strengths, and areas for improvement through interactive sessions'
+                title: 'Adaptive',
+                desc: 'We keeps learning in the “sweet spot” — difficult enough to grow, but never so hard that students get stuck or frustrated.'
               },
               {
                 step: '03',
-                title: 'Personalize',
-                desc: 'Creates a unique learning path tailored to the child\'s profile and educational goals'
+                title: 'Practice with Purpose',
+                desc: 'We reinforces learning through targeted practice, ensuring concepts are truly understood — not just memorized.'
               },
               {
                 step: '04',
-                title: 'Support',
-                desc: 'Provides 24/7 guidance, feedback, and celebration of progress every step of the way'
+                title: 'Actionable Transparency',
+                desc: 'Parents receive real-time insights into what their child understands, where they need support, and how they are progressing — beyond just grades.'
               }
             ].map((item, idx) => (
               <div key={idx} className="relative">
@@ -338,23 +338,23 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                name: 'Dr. Sarah Chen',
+                name: 'Vedant Bisen',
                 role: 'CEO & Founder',
                 bio: 'Former education researcher with 15+ years in EdTech innovation',
-                initials: 'SC'
+                initials: 'VB'
               },
               {
-                name: 'James Mitchell',
-                role: 'Chief AI Officer',
+                name: 'Vikesh Dutta',
+                role: 'Co-Founder',
                 bio: 'PhD in Machine Learning, previously at leading AI research labs',
-                initials: 'JM'
+                initials: 'VD'
               },
-              {
-                name: 'Priya Sharma',
-                role: 'Head of Child Development',
-                bio: 'Child psychologist and learning specialist with 20+ years experience',
-                initials: 'PS'
-              }
+              // {
+              //   name: 'Priya Sharma',
+              //   role: 'Head of Child Development',
+              //   bio: 'Child psychologist and learning specialist with 20+ years experience',
+              //   initials: 'PS'
+              // }
             ].map((member, idx) => (
               <div key={idx} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
                 <div className="h-48 bg-gradient-to-br from-brand-navy to-brand-green flex items-center justify-center">
@@ -373,7 +373,7 @@ export default function Home() {
         </div>
       </section >
 
-      {/* Content Partners Section */}
+      {/* Content Partners Section
       < section className="py-20 px-4" >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -405,7 +405,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section >
+      </section > */}
 
       {/* CTA Section */}
       < section className="py-20 px-4 bg-gradient-to-r from-brand-navy to-blue-700 text-white" >
