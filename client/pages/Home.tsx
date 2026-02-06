@@ -1,7 +1,18 @@
 import { Link } from 'react-router-dom';
-import { Zap, Sparkles, Gauge, Target, Users, BookOpen, Award } from 'lucide-react';
-import { Check, Lock, Brain, AlertCircle } from 'lucide-react';
-import { CheckCircle2, Play } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { CheckCircle2, Play, Check, Lock, Brain, AlertCircle, Zap, Sparkles, Gauge, Target, Users, BookOpen, Award } from 'lucide-react';
+
+const FadeInSection = ({ children, delay = 0 }: { children: React.ReactNode, delay?: number }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-100px" }}
+    transition={{ duration: 0.6, delay, ease: "easeOut" }}
+  >
+    {children}
+  </motion.div>
+);
+
 export default function Home() {
   return (
     <div className="bg-white">
@@ -79,14 +90,14 @@ export default function Home() {
                 description: 'In a fixed-pace classroom, missed concepts go undetected. These "holes" in foundational knowledge compound over time, causing students to hit a wall in higher grades.'
               }
             ].map((item, idx) => (
-              <div key={idx} className="bg-white rounded-xl p-8 shadow-sm hover:shadow-xl transition-all border-t-4 border-transparent hover:border-brand-blue relative overflow-hidden group">
+              <div key={idx} className="bg-white rounded-xl p-8 shadow-sm hover:shadow-xl transition-all border-t-4 border-transparent hover:border-brand-blue relative overflow-hidden group flex flex-col items-center text-center">
 
                 {/* Subtle Background Number for Academic feel */}
                 <div className="absolute -right-4 -top-4 text-9xl text-gray-50 opacity-5 font-serif group-hover:text-brand-blue group-hover:opacity-10 transition-colors">
                   {idx + 1}
                 </div>
 
-                <div className="relative z-10">
+                <div className="relative z-10 flex flex-col items-center">
                   <div className="text-4xl mb-4 bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center text-brand-blue">
                     {item.icon}
                   </div>
@@ -111,7 +122,7 @@ export default function Home() {
       </section>
 
       {/* What Children Need Section */}
-      < section className="py-20 px-4" >
+      <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-brand-navy mb-4">
@@ -277,13 +288,21 @@ export default function Home() {
       </section > */}
 
       {/* How It Works Section */}
-      < section className="py-20 px-4" >
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-brand-navy mb-4">
-              How GenEd Works
-            </h2>
-          </div>
+      <section className="py-20 px-4 relative">
+        <div className="absolute top-0 left-0 w-full overflow-hidden leading-[0] transform rotate-180 -mt-1">
+          <svg className="relative block w-full h-[50px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,2.92V0H0V27.35A600.21,600.21,0,0,1,321.39,56.44Z" className="fill-gray-50"></path>
+          </svg>
+        </div>
+
+        <div className="max-w-[1400px] mx-auto px-4 relative z-10">
+          <FadeInSection>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-brand-navy mb-4">
+                How GenEd Works
+              </h2>
+            </div>
+          </FadeInSection>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
@@ -308,70 +327,75 @@ export default function Home() {
                 desc: 'Parents receive real-time insights into what their child understands, where they need support, and how they are progressing — beyond just grades.'
               }
             ].map((item, idx) => (
-              <div key={idx} className="relative">
-                <div className="bg-brand-navy text-white rounded-xl p-8 h-full">
-                  <div className="text-5xl font-bold text-brand-green mb-4">{item.step}</div>
-                  <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                  <p className="text-gray-200">{item.desc}</p>
+              <FadeInSection key={idx} delay={idx * 0.1}>
+                <div className="relative h-full">
+                  <div className="bg-brand-navy text-white rounded-xl px-6 py-8 h-full flex flex-col hover:-translate-y-2 transition-transform duration-300 shadow-xl border border-white/10">
+                    <div className="text-5xl font-bold text-brand-green mb-6 opacity-80 text-center">{item.step}</div>
+                    <h3 className="text-lg lg:text-xl font-bold mb-4 tracking-tight text-center">{item.title}</h3>
+                    <p className="text-gray-300 text-sm leading-relaxed text-left">{item.desc}</p>
+                  </div>
+                  {idx < 3 && (
+                    <div className="hidden md:block absolute top-1/2 -translate-y-1/2 -right-[1.7rem] z-20">
+                      <div className="bg-white rounded-full p-1 shadow-md">
+                        <span className="text-brand-green font-bold">→</span>
+                      </div>
+                    </div>
+                  )}
                 </div>
-                {idx < 3 && (
-                  <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-brand-green text-2xl">→</div>
-                )}
-              </div>
+              </FadeInSection>
             ))}
           </div>
         </div>
-      </section >
+      </section>
 
       {/* Team Section */}
-      < section className="py-20 px-4 bg-gray-50" >
+      <section className="py-24 px-4 bg-gray-50 relative">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-brand-navy mb-4">
-              Meet the Team Behind GenEd
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Built by educators, technologists, and child development experts passionate about transforming education
-            </p>
-          </div>
+          <FadeInSection>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-brand-navy mb-4">
+                Meet the Team Behind GenEd
+              </h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                {/* Built by educators, technologists, and child development experts passionate about transforming education */}
+              </p>
+            </div>
+          </FadeInSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Centered Grid for Team */}
+          <div className="flex flex-wrap justify-center gap-8">
             {[
               {
                 name: 'Vedant Bisen',
-                role: 'CEO & Founder',
-                bio: 'Former education researcher with 15+ years in EdTech innovation',
+                role: 'Founder & CEO',
+                bio: 'Bachelors in Electronics and Computer Science',
                 initials: 'VB'
               },
               {
                 name: 'Vikesh Dutta',
                 role: 'Co-Founder',
-                bio: 'PhD in Machine Learning, previously at leading AI research labs',
+                bio: 'M.Sc in Marketing, Business Management and Entrepreneurship',
                 initials: 'VD'
-              },
-              // {
-              //   name: 'Priya Sharma',
-              //   role: 'Head of Child Development',
-              //   bio: 'Child psychologist and learning specialist with 20+ years experience',
-              //   initials: 'PS'
-              // }
+              }
             ].map((member, idx) => (
-              <div key={idx} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-brand-navy to-brand-green flex items-center justify-center">
-                  <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center text-2xl font-bold text-brand-navy">
-                    {member.initials}
+              <FadeInSection key={idx} delay={idx * 0.2}>
+                <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 w-full max-w-sm group border-t-2 border-transparent hover:border-brand-green">
+                  <div className="h-48 bg-gradient-to-br from-brand-navy to-brand-green flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                    <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center text-2xl font-bold text-brand-navy shadow-lg">
+                      {member.initials}
+                    </div>
+                  </div>
+                  <div className="p-8 text-center">
+                    <h3 className="text-2xl font-bold text-brand-navy mb-1">{member.name}</h3>
+                    <p className="text-brand-green font-bold text-sm uppercase tracking-wider mb-4">{member.role}</p>
+                    <p className="text-gray-600 leading-relaxed">{member.bio}</p>
                   </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-brand-navy">{member.name}</h3>
-                  <p className="text-brand-green font-semibold text-sm mb-3">{member.role}</p>
-                  <p className="text-gray-600">{member.bio}</p>
-                </div>
-              </div>
+              </FadeInSection>
             ))}
           </div>
         </div>
-      </section >
+      </section>
 
       {/* Content Partners Section
       < section className="py-20 px-4" >
@@ -408,7 +432,7 @@ export default function Home() {
       </section > */}
 
       {/* CTA Section */}
-      < section className="py-20 px-4 bg-gradient-to-r from-brand-navy to-blue-700 text-white" >
+      <section className="py-20 px-4 bg-gradient-to-r from-brand-navy to-blue-700 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Ready to Transform Your Child's Learning?
@@ -424,6 +448,6 @@ export default function Home() {
           </Link>
         </div>
       </section >
-    </div >
+    </div>
   );
 }
