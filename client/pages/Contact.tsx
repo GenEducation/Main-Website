@@ -10,20 +10,42 @@ export default function Contact() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    if (error) setError(null);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
-    setTimeout(() => {
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setSubmitted(false);
-    }, 3000);
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setError(data.message || 'Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      setError('Failed to connect to the server. Please check your connection.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -60,9 +82,9 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-brand-navy mb-1">Our Office</h4>
-                    <p className="text-gray-600">123 Education Street</p>
-                    <p className="text-gray-600">Learning City, LC 12345</p>
-                    <p className="text-gray-600">United States</p>
+                    <p className="text-gray-600">S-231 GF Uppal Southend</p>
+                    <p className="text-gray-600">Sector 49, Gurugram, Haryana 122018</p>
+                    <p className="text-gray-600">India</p>
                   </div>
                 </div>
 
@@ -75,8 +97,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-brand-navy mb-1">Phone</h4>
-                    <a href="tel:+12345678900" className="text-brand-green hover:text-brand-navy font-semibold">
-                      +1 (234) 567-8900
+                    <a href="tel:+91 9910801257" className="text-brand-green hover:text-brand-navy font-semibold">
+                      +91 9910801257
                     </a>
                     <p className="text-gray-600 text-sm mt-1">Available Monday-Friday, 9AM-6PM EST</p>
                   </div>
@@ -107,7 +129,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-brand-navy mb-1">Business Hours</h4>
-                    <p className="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM EST</p>
+                    <p className="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM IST</p>
                     <p className="text-gray-600">Saturday - Sunday: Closed</p>
                   </div>
                 </div>
@@ -138,11 +160,23 @@ export default function Contact() {
               <div className="bg-white rounded-2xl border-2 border-gray-200 p-8 shadow-lg">
                 <h3 className="text-2xl font-bold text-brand-navy mb-6">Send us a Message</h3>
 
+                {error && (
+                  <div className="bg-red-50 border-2 border-red-500 text-red-700 rounded-lg p-4 mb-6 text-sm">
+                    {error}
+                  </div>
+                )}
+
                 {submitted ? (
                   <div className="bg-green-50 border-2 border-brand-green rounded-lg p-8 text-center">
-                    <div className="text-4xl mb-4">✓</div>
+                    <div className="text-4xl mb-4 text-brand-green">✓</div>
                     <h4 className="text-xl font-bold text-brand-green mb-2">Message Sent!</h4>
                     <p className="text-gray-600">Thank you for reaching out. We'll get back to you soon.</p>
+                    <button
+                      onClick={() => setSubmitted(false)}
+                      className="mt-6 text-brand-green font-semibold hover:underline"
+                    >
+                      Send another message
+                    </button>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
@@ -157,7 +191,8 @@ export default function Contact() {
                         onChange={handleInputChange}
                         placeholder="John Doe"
                         required
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-green focus:outline-none transition-colors"
+                        disabled={loading}
+                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-green focus:outline-none transition-colors disabled:bg-gray-50"
                       />
                     </div>
 
@@ -172,7 +207,8 @@ export default function Contact() {
                         onChange={handleInputChange}
                         placeholder="john@example.com"
                         required
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-green focus:outline-none transition-colors"
+                        disabled={loading}
+                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-green focus:outline-none transition-colors disabled:bg-gray-50"
                       />
                     </div>
 
@@ -185,7 +221,8 @@ export default function Contact() {
                         value={formData.subject}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-green focus:outline-none transition-colors"
+                        disabled={loading}
+                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-green focus:outline-none transition-colors disabled:bg-gray-50"
                       >
                         <option value="">Select a subject</option>
                         <option value="general">General Inquiry</option>
@@ -208,15 +245,17 @@ export default function Contact() {
                         placeholder="Tell us how we can help..."
                         rows={6}
                         required
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-green focus:outline-none transition-colors resize-none"
+                        disabled={loading}
+                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-green focus:outline-none transition-colors resize-none disabled:bg-gray-50"
                       />
                     </div>
 
                     <button
                       type="submit"
-                      className="w-full bg-brand-green hover:bg-opacity-90 text-white font-bold py-3 px-6 rounded-lg transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2"
+                      disabled={loading}
+                      className="w-full bg-brand-green hover:bg-opacity-90 text-white font-bold py-3 px-6 rounded-lg transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      Send Message <Send size={20} />
+                      {loading ? 'Sending...' : 'Send Message'} <Send size={20} />
                     </button>
 
                     <p className="text-gray-600 text-sm text-center">

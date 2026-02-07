@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Test User",
+    "email": "test@example.com",
+    "subject": "general",
+    "message": "This is a test message to verify if the contact form is functional. It needs to be at least 10 characters long.",
+    "timestamp": "2026-02-07T09:32:23.045Z"
+  },
+  {
+    "name": "Vedant",
+    "email": "bisenvedant@gmail.com",
+    "subject": "general",
+    "message": "Hi, how are you ",
+    "timestamp": "2026-02-07T09:33:35.784Z"
+  }
+]

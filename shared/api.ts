@@ -10,3 +10,15 @@
 export interface DemoResponse {
   message: string;
 }
+
+export interface ContactSubmission {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+export interface ContactResponse {
+  success: boolean;
+  message: string;
+}
