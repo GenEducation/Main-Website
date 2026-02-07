@@ -77,12 +77,12 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start space-x-2">
                 <MapPin size={18} className="flex-shrink-0 mt-1" />
-                <span className="text-gray-300 text-sm">123 Education Street, Learning City, LC 12345</span>
+                <span className="text-gray-300 text-sm">S-231 GF Uppal Southend Sohna Road Gurgaon 122001</span>
               </li>
               <li className="flex items-center space-x-2">
                 <Phone size={18} />
-                <a href="tel:+1234567890" className="text-gray-300 hover:text-brand-green transition-colors">
-                  +1 (234) 567-890
+                <a href="tel:+919910801257" className="text-gray-300 hover:text-brand-green transition-colors">
+                  +91 9910801257
                 </a>
               </li>
               <li className="flex items-center space-x-2">
