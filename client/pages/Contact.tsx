@@ -316,7 +316,8 @@ export default function Contact() {
           <div className="bg-gray-200 rounded-2xl overflow-hidden h-96 flex items-center justify-center">
             <div className="text-center">
               <MapPin size={48} className="mx-auto text-brand-navy mb-4" />
-              <p className="text-gray-600 text-lg font-semibold">123 Education Street, Learning City, LC 12345</p>
+              <p className="text-gray-600 text-lg font-semibold">S-231 GF Uppal Southend</p>
+              <p className="text-gray-600 text-lg font-semibold">Sector 49, Gurugram, Haryana 122018</p>
             </div>
           </div>
         </div>

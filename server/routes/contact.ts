@@ -1,8 +1,6 @@
 import { RequestHandler } from "express";
-import { ContactSubmission, ContactResponse } from "@shared/api";
+import { ContactResponse } from "@shared/api";
 import { z } from "zod";
-import fs from "fs/promises";
-import path from "path";
 
 const contactSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters"),
@@ -11,31 +9,35 @@ const contactSchema = z.object({
     message: z.string().min(10, "Message must be at least 10 characters"),
 });
 
-const DATA_FILE = path.join(process.cwd(), "server", "data", "contact_submissions.json");
-
 export const handleContact: RequestHandler = async (req, res) => {
     try {
         const validatedData = contactSchema.parse(req.body);
 
-        // Read existing submissions
-        let submissions: (ContactSubmission & { timestamp: string })[] = [];
-        try {
-            const fileContent = await fs.readFile(DATA_FILE, "utf-8");
-            submissions = JSON.parse(fileContent);
-        } catch (error) {
-            // If file doesn't exist or is invalid, start with empty array
-            submissions = [];
+        const webhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
+
+        if (!webhookUrl) {
+            console.error("Missing GOOGLE_SHEETS_WEBHOOK_URL environment variable");
+            const response: ContactResponse = {
+                success: false,
+                message: "Server configuration error. Please contact the administrator.",
+            };
+            return res.status(500).json(response);
         }
 
-        // Add new submission
-        const newSubmission = {
-            ...validatedData,
-            timestamp: new Date().toISOString(),
-        };
-        submissions.push(newSubmission);
+        // Forward to Google Apps Script
+        // We use a simple POST request. Google Apps Script requires a redirect follow usually,
+        // but fetch should handle this or we can just send it and assume success if it hits.
+        const googleResponse = await fetch(webhookUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(validatedData),
+        });
 
-        // Save back to file
-        await fs.writeFile(DATA_FILE, JSON.stringify(submissions, null, 2));
+        if (!googleResponse.ok) {
+            throw new Error(`Google Apps Script responded with status: ${googleResponse.status}`);
+        }
 
         const response: ContactResponse = {
             success: true,
@@ -54,7 +56,7 @@ export const handleContact: RequestHandler = async (req, res) => {
         console.error("Contact submission error:", error);
         const response: ContactResponse = {
             success: false,
-            message: "Something went wrong. Please try again later.",
+            message: error instanceof Error ? `Server error: ${error.message}` : "Something went wrong. Please try again later.",
         };
         res.status(500).json(response);
     }

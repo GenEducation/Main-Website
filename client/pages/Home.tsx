@@ -38,7 +38,7 @@ export default function Home() {
                     </div>
                     <div className="bg-white/10 backdrop-blur rounded-lg p-6 text-center">
                       <div className="text-3xl font-bold mb-2">24/7</div>
-                      <p className="text-sm font-semibold">Available</p>
+                      <p className="text-sm font-semibold">Availability</p>
                     </div>
                     <div className="bg-white/10 backdrop-blur rounded-lg p-6 text-center">
                       <div className="text-3xl font-bold mb-2">📈</div>
