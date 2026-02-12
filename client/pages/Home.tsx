@@ -73,20 +73,20 @@ export default function Home() {
             {[
               {
                 icon: '👥',
-                // subtitle: 'One Teacher 30 Students',
+                subtitle: 'Scale',
                 title: 'One Size Doesn\'t Fit All',
                 description: 'Teachers manage 30+ students with different learning styles, paces, and needs. Individual attention is impossible.'
               },
               {
                 icon: '⏰',
-                // subtitle: 'One Teacher 30 Students',
+                subtitle: 'Timing',
                 title: 'Learning Pace Mismatch',
                 description: 'Some students rush ahead while others fall behind. The classroom pace can\'t adapt to each child\'s needs.'
               },
               {
                 icon: '🧀', // The Swiss Cheese visual
+                subtitle: 'Gaps',
                 title: 'The Swiss Cheese Effect',
-                // subtitle: 'Compound Learning Gaps',
                 description: 'In a fixed-pace classroom, missed concepts go undetected. These "holes" in foundational knowledge compound over time, causing students to hit a wall in higher grades.'
               }
             ].map((item, idx) => (
@@ -369,21 +369,31 @@ export default function Home() {
                 name: 'Vedant Bisen',
                 role: 'Founder & CEO',
                 bio: 'Bachelors in Electronics and Computer Science',
-                initials: 'VB'
+                initials: 'VB',
+                image: '/Vedant_bisen.jpeg'
               },
               {
                 name: 'Vikesh Dutta',
                 role: 'Co-Founder',
                 bio: 'M.Sc in Marketing, Business Management and Entrepreneurship',
-                initials: 'VD'
+                initials: 'VD',
+                image: '/Vikesh_dutta.jpeg'
               }
             ].map((member, idx) => (
               <FadeInSection key={idx} delay={idx * 0.2}>
                 <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 w-full max-w-sm group border-t-2 border-transparent hover:border-brand-green">
-                  <div className="h-48 bg-gradient-to-br from-brand-navy to-brand-green flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
-                    <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center text-2xl font-bold text-brand-navy shadow-lg">
-                      {member.initials}
-                    </div>
+                  <div className="h-64 bg-gray-100 flex items-center justify-center overflow-hidden">
+                    {member.image ? (
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div className="w-24 h-24 bg-brand-navy rounded-full flex items-center justify-center text-2xl font-bold text-white shadow-lg">
+                        {member.initials}
+                      </div>
+                    )}
                   </div>
                   <div className="p-8 text-center">
                     <h3 className="text-2xl font-bold text-brand-navy mb-1">{member.name}</h3>
