@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/react";
 import Home from "./pages/Home";
 import Onboarding from "./pages/Onboarding";
 import Offerings from "./pages/Offerings";
@@ -41,6 +42,7 @@ const App = () => (
           <Route path="*" element={<Layout><NotFound /></Layout>} />
         </Routes>
       </BrowserRouter>
+      <Analytics />
     </TooltipProvider>
   </QueryClientProvider>
 );
