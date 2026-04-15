@@ -11,7 +11,7 @@ export function Navigation() {
 
   const navItems = [
     { label: 'Home', path: '/' },
-    { label: 'Onboarding', path: '/onboarding' },
+    { label: 'For Schools', path: '/onboarding' },
     { label: 'Offerings', path: '/offerings' },
     { label: 'Contact', path: '/contact' },
   ];
@@ -50,10 +50,10 @@ export function Navigation() {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Link
-              to="/onboarding"
+              to="/contact"
               className="bg-brand-green hover:bg-opacity-90 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
             >
-              Get Started
+              Book a Demo
             </Link>
           </div>
 
@@ -85,11 +85,11 @@ export function Navigation() {
               </Link>
             ))}
             <Link
-              to="/onboarding"
+              to="/contact"
               onClick={() => setIsOpen(false)}
               className="mt-4 block bg-brand-green hover:bg-opacity-90 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-200 text-center"
             >
-              Get Started
+              Book a Demo
             </Link>
           </div>
         )}

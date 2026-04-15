@@ -294,7 +294,7 @@ export default function Contact() {
               },
               {
                 question: 'Can GenEd replace a teacher?',
-                answer: 'No, LearnMate is designed to complement, not replace, traditional education. It works best as a supplement to classroom learning and provides 24/7 personalized support.'
+                answer: 'No, GenEd is designed to complement, not replace, traditional education. It works best as a supplement to classroom learning and provides 24/7 personalized support.'
               },
               {
                 question: 'Is my child\'s data safe?',
