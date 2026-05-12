@@ -47,8 +47,16 @@ export function Navigation() {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* CTA Buttons */}
+          <div className="hidden md:flex gap-3">
+            <a
+              href="https://app.gened.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-2 border-brand-green text-brand-green hover:bg-brand-green hover:text-white font-semibold px-6 py-2 rounded-lg transition-all duration-200"
+            >
+              Try GenEd
+            </a>
             <Link
               to="/contact"
               className="bg-brand-green hover:bg-opacity-90 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
@@ -84,13 +92,24 @@ export function Navigation() {
                 {item.label}
               </Link>
             ))}
-            <Link
-              to="/contact"
-              onClick={() => setIsOpen(false)}
-              className="mt-4 block bg-brand-green hover:bg-opacity-90 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-200 text-center"
-            >
-              Book a Demo
-            </Link>
+            <div className="mt-4 space-y-2">
+              <a
+                href="https://app.gened.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsOpen(false)}
+                className="block border-2 border-brand-green text-brand-green hover:bg-brand-green hover:text-white font-semibold px-6 py-2 rounded-lg transition-all duration-200 text-center"
+              >
+                Try GenEd
+              </a>
+              <Link
+                to="/contact"
+                onClick={() => setIsOpen(false)}
+                className="block bg-brand-green hover:bg-opacity-90 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-200 text-center"
+              >
+                Book a Demo
+              </Link>
+            </div>
           </div>
         )}
       </div>
