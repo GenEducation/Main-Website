@@ -170,13 +170,13 @@ export default function Home() {
                     },
                     {
                       icon: <Zap className="w-5 h-5 text-brand-green" />,
-                      title: "Adapts in real time",
-                      desc: "The device reads how your child responds and adjusts its explanations on the fly — like a tutor who actually listens.",
+                        title: "Adapts until they truly understand",
+                      desc: "The device reads how your child responds and tries a different approach if something isn't landing — like a tutor who actually listens, not one who just moves on.",
                     },
                     {
                       icon: <Wifi className="w-5 h-5 text-brand-green" />,
-                      title: "Always available",
-                      desc: "10pm before an exam? The GenEd Deskbot is ready. No scheduling, no waiting, no extra cost.",
+                      title: "Always there when they need it",
+                      desc: "10pm before an exam, a quiet Sunday afternoon, or the moment curiosity strikes — GenEd is always ready. Patient, calm, and never too tired to explain something again.",
                     },
                     {
                       icon: <BarChart2 className="w-5 h-5 text-brand-green" />,
@@ -205,6 +205,74 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── WHY GENED ── */}
+      <section className="py-24 px-4 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <FadeInSection>
+            <div className="text-center mb-16">
+              <span className="text-brand-green font-bold text-sm uppercase tracking-widest mb-4 block">
+                Why GenEd
+              </span>
+              <h2 className="text-4xl md:text-5xl font-bold text-brand-navy mb-4">
+                Designed around how children actually learn
+              </h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Every decision GenEd makes — from the hardware to the AI — is
+                built around one goal: helping every child learn confidently,
+                safely, and at their own pace.
+              </p>
+            </div>
+          </FadeInSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: "🧠",
+                title: "Every Child Learns Differently",
+                desc: "GenEd adapts to each child's unique pace, strengths, and learning style — not a one-size-fits-all curriculum that leaves some students behind.",
+              },
+              {
+                icon: "📱",
+                title: "A Dedicated Device, Not Another Distraction",
+                desc: "Unlike tablets or phones, the GenEd Deskbot has one purpose: learning. No browser, no apps, no notifications. The hardware itself keeps your child focused.",
+              },
+              {
+                icon: "✨",
+                title: "Making Learning Engaging and Fun",
+                desc: "Interactive voice conversations, visual explanations, and a friendly AI companion that keeps children curious, motivated, and genuinely excited to learn.",
+              },
+              {
+                icon: "👨‍👩‍👧",
+                title: "Helping Parents Stay Connected",
+                desc: "Real-time progress insights help parents understand exactly where their child is thriving and where they need a little more support — beyond just grades.",
+              },
+              {
+                icon: "🛡️",
+                title: "Safe Learning, Built Responsibly",
+                desc: "Built-in content guardrails protect children from inappropriate interactions. GenEd is designed from the ground up to be a safe AI experience for kids.",
+              },
+              {
+                icon: "🏠",
+                title: "Learning Beyond the Classroom",
+                desc: "Whether it's homework help at 9pm or revision before exams, GenEd helps children build confidence, consistency, and independent learning habits at home.",
+              },
+            ].map((item, idx) => (
+              <FadeInSection key={idx} delay={idx * 0.08}>
+                <div className="bg-white rounded-xl p-8 border border-gray-100 hover:border-brand-green hover:shadow-lg transition-all h-full">
+                  <div className="text-3xl mb-4">{item.icon}</div>
+                  <h3 className="text-xl font-bold text-brand-navy mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed text-sm">
+                    {item.desc}
+                  </p>
+                </div>
+              </FadeInSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── PARENT TRANSPARENCY ── */}
       <section className="py-24 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
@@ -216,14 +284,13 @@ export default function Home() {
                   For Parents
                 </span>
                 <h2 className="text-4xl md:text-5xl font-bold text-brand-navy mb-6 leading-tight">
-                  Know exactly where your child stands. Not just what they
-                  scored.
+                  Be part of your child's learning journey. Not just their results.
                 </h2>
                 <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                  The GenEd parent app gives you a real-time window into what
-                  your child understands, where they're stuck, and what the
-                  device is working on with them. Not after the exam — during
-                  the learning.
+                  The GenEd parent app gives you a real-time window into your
+                  child's learning journey — what they understand, where they're
+                  struggling, and what the device is working through with them.
+                  Not after the exam. During the learning, when it still matters.
                 </p>
 
                 <div className="space-y-4">
@@ -258,6 +325,76 @@ export default function Home() {
                 />
               </div>
             </FadeInSection>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SAFE & RESPONSIBLE AI ── */}
+      <section className="py-24 px-4 bg-brand-navy">
+        <div className="max-w-7xl mx-auto">
+          <FadeInSection>
+            <div className="text-center mb-16">
+              <span className="text-brand-green font-bold text-sm uppercase tracking-widest mb-4 block">
+                Safe & Responsible AI
+              </span>
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                Built with children in mind. Every decision.
+              </h2>
+              <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+                When your child interacts with GenEd, you can trust that every
+                part of the experience has been designed to be safe, appropriate,
+                and responsible.
+              </p>
+            </div>
+          </FadeInSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                icon: <Shield className="w-6 h-6 text-brand-green" />,
+                title: "Content Guardrails",
+                desc: "GenEd's AI is built with guardrails that prevent children from accessing or receiving inappropriate content — no matter how they phrase their questions.",
+              },
+              {
+                icon: <Lock className="w-6 h-6 text-brand-green" />,
+                title: "No Open Internet Access",
+                desc: "The Deskbot has no browser and no open search. What your child can access is intentional, controlled, and limited to learning.",
+              },
+              {
+                icon: <Users className="w-6 h-6 text-brand-green" />,
+                title: "Full Parent Visibility",
+                desc: "Parents can see exactly what topics their child is engaging with through the GenEd app. There are no hidden conversations.",
+              },
+              {
+                icon: <Zap className="w-6 h-6 text-brand-green" />,
+                title: "Supervised Learning Interactions",
+                desc: "Every interaction is purpose-driven and curriculum-focused. GenEd doesn't chat freely — it teaches, guides, and asks questions in a structured learning context.",
+              },
+              {
+                icon: <BarChart2 className="w-6 h-6 text-brand-green" />,
+                title: "Designed for Children",
+                desc: "The AI's language, tone, and responses are calibrated for children — patient, encouraging, and age-appropriate at all times.",
+              },
+              {
+                icon: <Wifi className="w-6 h-6 text-brand-green" />,
+                title: "Responsible Tech for Kids",
+                desc: "We believe children deserve AI that respects their wellbeing — not one that maximises engagement at any cost. GenEd supports healthy study habits, not screen addiction.",
+              },
+            ].map((item, idx) => (
+              <FadeInSection key={idx} delay={idx * 0.08}>
+                <div className="bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-brand-green/50 transition-all h-full">
+                  <div className="bg-green-900/30 rounded-lg p-3 w-fit mb-4">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </FadeInSection>
+            ))}
           </div>
         </div>
       </section>
@@ -349,8 +486,8 @@ export default function Home() {
             {[
               {
                 step: "01",
-                title: "Student turns it on",
-                desc: "The device greets them by name and picks up exactly where they left off — no login, no setup.",
+                title: "Your child turns it on",
+                desc: "The device greets them by name and picks up exactly where they left off. No login, no setup — just an eager AI ready to learn with them.",
               },
               {
                 step: "02",
@@ -359,8 +496,8 @@ export default function Home() {
               },
               {
                 step: "03",
-                title: "Adapts explanations until it clicks",
-                desc: "If the first explanation doesn't land, it tries another. It keeps going until the concept is genuinely understood — not just repeated.",
+                title: "Keeps going until it genuinely clicks",
+                desc: "If the first explanation doesn't land, it tries another angle — a metaphor, a visual, a simpler example. It never gives up on a student.",
               },
               {
                 step: "04",
